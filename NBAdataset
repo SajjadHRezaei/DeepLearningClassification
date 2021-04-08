@@ -1,27 +1,33 @@
 # Import pandas and numpy
 import pandas as pd
 import numpy as np
+#--------------------------------
 
 #Read the dataset
 df=pd.read_csv('nba_logreg.csv')
 print('Number of samples: {}'.format(df.shape[0]))
 print('Number of features: {}'.format(df.shape[1]))
 df
+#--------------------------------
 
 #description of features
 from IPython.display import Image
 Image(filename='nba.PNG')
+#---------------------------------
 
 # Print info on white wine
 df.info()
+#--------------------------------
 
 #Missing values
 df.isnull().sum()
+#--------------------------------
 
 #Clean the dataset
 dff=df.drop(['Name'], axis=1)
 dff[['3P%']] = dff[['3P%']].replace(np.NaN, dff[['3P%']].mean())
 dff.isnull().sum()
+#--------------------------------
 
 #describe the dataset
 dff.describe()
