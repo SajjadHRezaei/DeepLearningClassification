@@ -23,13 +23,13 @@ df.describe()
 from sklearn.model_selection import train_test_split
 
 # Specify the data 
-X=df.iloc[:,0:24]
+X=df.iloc[:,0:23]
 
 # Specify the target labels and flatten the array
 y=df['default payment next month'].values.ravel()
 
 # Split the data up in train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
 
 from sklearn.preprocessing import StandardScaler
@@ -56,7 +56,7 @@ from keras.layers import Dense
 model = Sequential()
 
 # Add an input layer 
-model.add(Dense(12, activation='relu', input_shape=(24,)))
+model.add(Dense(12, activation='relu', input_shape=(23,)))
 
 # Add one hidden layer 
 model.add(Dense(8, activation='relu'))
