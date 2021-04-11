@@ -92,3 +92,38 @@ grid.fit(X_train,y_train)
 
 print(grid.best_score_)
 print(grid.best_params_)
+####
+
+# Initialize the constructor
+model = Sequential()
+
+# Add an input layer 
+model.add(Dense(64, activation='sigmoid', input_shape=(23,)))
+
+# Add one hidden layer 
+model.add(Dense(12, activation='sigmoid'))
+
+# Add an output layer 
+model.add(Dense(1, activation='sigmoid'))
+
+# Model output shape
+model.output_shape
+
+# Model summary
+model.summary()
+
+# Model config
+model.get_config()
+
+# List all weight tensors 
+model.get_weights()
+
+model.compile(loss='binary_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
+                   
+model.fit(X_train, y_train,validation_split=0.2,epochs=20, batch_size=32, verbose=1)
+
+score = model.evaluate(X_test, y_test,return_dict=True,verbose=1)
+
+print(score)
