@@ -127,3 +127,23 @@ model.fit(X_train, y_train,validation_split=0.2,epochs=20, batch_size=32, verbos
 score = model.evaluate(X_test, y_test,return_dict=True,verbose=1)
 
 print(score)
+
+import matplotlib.pyplot as plt
+
+def plot_loss(history):
+  plt.plot(history.history['loss'], label='loss')
+  plt.plot(history.history['val_loss'], label='val_loss')
+  plt.ylim([0, 1])
+  plt.xlabel('Epoch')
+  plt.ylabel('accuracy')
+  plt.legend()
+  plt.grid(True)
+
+# Commented out IPython magic to ensure Python compatibility.
+# %%time
+ history = model.fit(
+     X_train, y_train,
+     validation_split=0.2,
+     verbose=1, epochs=20)
+
+plot_loss(history)
